@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    <title>Форум - Вход и регистрация</title>
+{% endblock title %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'users/css/style.css' %}">
+{% endblock links %}
+
+{% block main %}
+    <main class="container">
+        <h1 class="page-title">Вход и регистрация</h1>
+        <div class="auth-container">
+            <section id="login-form" class="auth-form active-form">
+                <h2>Вход в аккаунт</h2>
+                <form action="{% url "users:login" %}" method="POST" name="signup">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="{{ login_form.username.id_for_label }}">User name</label>
+                        {{ form.username }}
+                    </div>                 
+                    <div class="form-group">
+                        <label for="{{ login_form.password.id_for_label }}">Password</label>
+                        {{ form.password }}
+                    </div>  
+                    <div class="form-footer">
+                        <a href="#">Забыли пароль?</a>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn">Войти</button>
+                    </div>
+                </form>
+                <div class="form-switcher">
+                    Нет аккаунта? <a href="{% url 'users:sign' %}" id="show-register">Зарегистрироваться</a>
+                </div>
+            </section>
+        </div>
+    </main>
+{% endblock main %}

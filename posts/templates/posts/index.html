@@ -10,6 +10,13 @@
 {% endblock links %}
 
 {% block main %}
+
+    {% if messages %}
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %}
+    {% endif %}
+
     <!-- Основное содержание -->
     <main class="container">
         <h1 class="page-title">Главная страница форума</h1>

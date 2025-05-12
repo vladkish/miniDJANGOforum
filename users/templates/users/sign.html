@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    <title>Форум - Вход и регистрация</title>
+{% endblock title %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'users/css/style.css' %}">
+{% endblock links %}
+
+{% block main %}
+
+    {% if form.errors %}
+        {% for field, errors in form.errors.item %}
+            {% for error in errors %}
+                {{ error }}
+                {{ field }}
+            {% endfor %}
+        {% endfor %}
+    {% endif %}
+
+    <!-- Основное содержание -->
+    <main class="container">
+        <h1 class="page-title">Вход и регистрация</h1>
+        
+        <div class="auth-container">
+            <!-- Форма входа -->
+            <section id="login-form" class="auth-form active-form">
+                <h2>Вход в аккаунт</h2>
+                <form action="{% url "users:sign" %}" method="POST" name="signup">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="{{ login_form.first_name.id_for_label }}">First name</label>
+                        {{ form.first_name }}
+                    </div>                 
+                    <div class="form-group">
+                        <label for="{{ login_form.last_name.id_for_label }}">Last name</label>
+                        {{ form.last_name }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ login_form.username.id_for_label }}">User name</label>
+                        {{ form.username }}
+                    </div>                 
+                    <div class="form-group">
+                        <label for="{{ login_form.age.id_for_label }}">Age</label>
+                        {{ form.age }}
+                    </div>               
+                    <div class="form-group">
+                        <label for="{{ login_form.email.id_for_label }}">Email</label>
+                        {{ form.email }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ login_form.image.id_for_label }}">Image</label>
+                        {{ form.image }}
+                    </div>                 
+                    <div class="form-group">
+                        <label for="{{ login_form.password1.id_for_label }}">Password1</label>
+                        {{ form.password1 }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.password2.if_for_label }}">Password2</label>
+                        {{ form.password2 }}
+                    </div>                    
+                     
+                    <div class="form-group">
+                        <button type="submit" class="btn">Зарегистрироваться</button>
+                    </div>
+
+                    <div class="form-footer">
+                        <a href="#">Забыли пароль?</a>
+                    </div>
+                </form>
+                <div class="form-switcher">
+                    Есть аккаунта? <a href="#" id="show-register">Войти</a>
+                </div>
+            </section>
+            
+            <!-- Форма регистрации -->
+            <section id="register-form" class="auth-form hidden">
+                <h2>Регистрация</h2>
+                <form action="{% url 'users:main' %}" method="POST" name="signup">
+                    <div class="form-group">
+                        <label for="reg-username">Имя пользователя</label>
+                        <input type="text" id="reg-username" class="form-control" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-email">Email</label>
+                        <input type="email" id="reg-email" class="form-control" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-password">Пароль</label>
+                        <input type="password" id="reg-password" class="form-control" name="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-confirm-password">Подтверждение пароля</label>
+                        <input type="password" id="reg-confirm-password" class="form-control" name="confirm_password" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn" name="signup">Зарегистрироваться</button>
+                    </div>
+                </form>
+                <div class="form-switcher">
+                    Уже есть аккаунт? <a href="#" id="show-login">Войти</a>
+                </div>
+            </section>
+        </div>
+    </main>
+{% endblock main %}
+    
+<script>
+    document.getElementById('show-register').addEventListener('click', function(e) {
+        e.preventDefault();
+        document.getElementById('login-form').classList.add('hidden');
+        document.getElementById('register-form').classList.remove('hidden');
+        document.getElementById('register-form').classList.add('active-form');
+    });
+    
+    document.getElementById('show-login').addEventListener('click', function(e) {
+        e.preventDefault();
+        document.getElementById('register-form').classList.add('hidden');
+        document.getElementById('login-form').classList.remove('hidden');
+        document.getElementById('login-form').classList.add('active-form');
+    });
+</script>
