@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% load static %}
+    
+{% block title %}
+    <title>Форум - Главная страница</title>
+{% endblock title %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'posts/style.css' %}">
+{% endblock links %}
+
+{% block main %}
+    <!-- Основное содержание -->
+    <main class="container">
+        <h1 class="page-title">Главная страница форума</h1>
+        
+        <!-- Категории -->
+        <section class="categories">
+            <article class="category">
+                <h2 class="category-title"><a href="category.html">Программирование</a></h2>
+                <p class="category-description">Обсуждение языков программирования, фреймворков и технологий разработки</p>
+                <div class="category-stats">
+                    <span>Тем: 125</span>
+                    <span>Сообщений: 543</span>
+                </div>
+            </article>
+            
+            <article class="category">
+                <h2 class="category-title"><a href="category.html">Дизайн</a></h2>
+                <p class="category-description">Графический дизайн, UI/UX, веб-дизайн и другие визуальные искусства</p>
+                <div class="category-stats">
+                    <span>Тем: 78</span>
+                    <span>Сообщений: 321</span>
+                </div>
+            </article>
+            
+            <article class="category">
+                <h2 class="category-title"><a href="category.html">Базы данных</a></h2>
+                <p class="category-description">SQL, NoSQL, оптимизация запросов и администрирование баз данных</p>
+                <div class="category-stats">
+                    <span>Тем: 64</span>
+                    <span>Сообщений: 287</span>
+                </div>
+            </article>
+        </section>
+        
+        <!-- Последние посты -->
+        <h2>Последние сообщения</h2>
+        <div class="posts-list">
+            <article class="post">
+                <div class="post-header">
+                    <h3 class="post-title"><a href="post.html">Как правильно организовать структуру проекта на React?</a></h3>
+                    <span class="post-author">Автор: <a href="profile.html">Иван_Программист</a></span>
+                </div>
+                <div class="post-content">
+                    <p>Друзья, подскажите как лучше организовать структуру большого проекта на React. Какие подходы вы используете? Поделитесь опытом...</p>
+                </div>
+                <div class="post-footer">
+                    <span class="post-date">Опубликовано: 15.05.2023</span>
+                    <div class="post-actions">
+                        <a href="#">Ответить</a>
+                        <a href="favorites.html">В избранное</a>
+                    </div>
+                </div>
+            </article>
+            
+            <article class="post">
+                <div class="post-header">
+                    <h3 class="post-title"><a href="post.html">Лучшие практики работы с MongoDB</a></h3>
+                    <span class="post-author">Автор: <a href="profile.html">DB_Admin</a></span>
+                </div>
+                <div class="post-content">
+                    <p>Хочу поделиться своим опытом работы с MongoDB и узнать, какие практики используете вы для обеспечения производительности...</p>
+                </div>
+                <div class="post-footer">
+                    <span class="post-date">Опубликовано: 14.05.2023</span>
+                    <div class="post-actions">
+                        <a href="#">Ответить</a>
+                        <a href="favorites.html">В избранное</a>
+                    </div>
+                </div>
+            </article>
+            
+            <article class="post">
+                <div class="post-header">
+                    <h3 class="post-title"><a href="post.html">Тренды в веб-дизайне 2023</a></h3>
+                    <span class="post-author">Автор: <a href="profile.html">DesignGuru</a></span>
+                </div>
+                <div class="post-content">
+                    <p>Собрал для вас подборку самых актуальных трендов в веб-дизайне этого года. Какие из них вы уже применяли в своих проектах?...</p>
+                </div>
+                <div class="post-footer">
+                    <span class="post-date">Опубликовано: 13.05.2023</span>
+                    <div class="post-actions">
+                        <a href="#">Ответить</a>
+                        <a href="favorites.html">В избранное</a>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </main>
+{% endblock main %}

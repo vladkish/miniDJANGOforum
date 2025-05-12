@@ -1,0 +1,47 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}{% endblock title %}
+    {% block links %}{% endblock links %}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <style>
+    </style>
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="index.html">Форум</a>
+            </div>
+            <nav>
+                <ul>
+                    {% comment %} {% if user.is_anonymous %} {% endcomment %}
+                        <li><a href="login.html">Войти</a></li>
+                        <li><a href="register.html">Регистрация</a></li>
+                    {% comment %} {% else %} {% endcomment %}
+                        <li><a href="profile.html">Профиль</a></li>
+                        <li><a href="favorites.html">Избранное</a></li>
+                        <li><a href="#">Выйти</a></li>
+                    {% comment %} {% endif %} {% endcomment %}
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    {% block main %}
+
+    {% endblock main %}
+    
+    <!-- Подвал -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Форум. Все права защищены.</p>
+        </div>
+    </footer>
+</body>
+</html>
