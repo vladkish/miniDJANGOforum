@@ -23,6 +23,11 @@
                     {% if user.is_anonymous %}
                         <li><a href="{% url 'users:login' %}">Войти</a></li>
                         <li><a href="{% url 'users:sign' %}">Регистрация</a></li>
+                    {% elif user.is_superuser %}
+                        <li><a href="{% url 'admin:index' %}">admin panel</a></li>
+                        <li><a href="profile.html">Профиль</a></li>
+                        <li><a href="favorites.html">Избранное</a></li>
+                        <li><a href="{% url 'users:logout' %}">Выйти</a></li>
                     {% else %}
                         <li><a href="profile.html">Профиль</a></li>
                         <li><a href="favorites.html">Избранное</a></li>

@@ -19,21 +19,7 @@
 
     <!-- Основное содержание -->
     <main class="container">
-        <h1 class="page-title">Главная страница форума</h1>
-        
-        <!-- Категории -->
-        <section class="categories">
-            {% for category in categoryies %}
-                <article class="category">
-                    <h2 class="category-title"><a href="{% url "posts:category" category.id %}">{{ category.title }}</a></h2>
-                    <p class="category-description">{{ category.description }}</p>
-                    <div class="category-stats">
-                        <span>Сообщений: {{ category.posts.count }}</span>
-                    </div>
-                </article>
-            {% endfor %}
-        </section>
-        
+        <h1 class="page-title">Главная страница форума</h1>        
         <!-- Последние посты -->
         <h2>Последние сообщения</h2>
         {% for post in posts %}
