@@ -1,4 +1,3 @@
-/* Стили для форм */
 .auth-container {
     display: flex;
     justify-content: space-between;
@@ -85,7 +84,6 @@
     font-weight: 500;
 }
 
-/* Анимации */
 .active-form {
     animation: fadeIn 0.5s ease-in-out;
 }
@@ -95,14 +93,12 @@
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Адаптивность */
 @media (max-width: 768px) {
     .auth-container {
         flex-direction: column;
     }
 }
 
-/* Дополнительные стили для переключения форм */
 .hidden {
     display: none;
 }

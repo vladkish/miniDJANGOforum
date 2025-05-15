@@ -28,7 +28,7 @@
                     <h2 class="category-title"><a href="{% url "posts:category" category.id %}">{{ category.title }}</a></h2>
                     <p class="category-description">{{ category.description }}</p>
                     <div class="category-stats">
-                        <span>Сообщений: {{ category.posts.count }}</span>
+                        <span>Количесвто постов: {{ category.posts.count }}</span>
                     </div>
                 </article>
             {% endfor %}
@@ -41,6 +41,8 @@
                 <article class="post">
                     <div class="post-header">
                         <h3 class="post-title"><a href="post.html">{{ post.title }}</a></h3>
+
+                        {% comment %} Переход на профиль автора {% endcomment %}
                         <span class="post-author">Автор: <a href="profile.html">{{ post.author }}</a></span>
                     </div>
                     <div class="post-content">

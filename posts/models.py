@@ -16,7 +16,7 @@ class Post(models.Model):
     description = models.TextField()
     image = models.ImageField(upload_to='posts_image/')
     date_public = models.DateTimeField(auto_now_add=True)
-    author = models.ForeignKey(to=User, on_delete=models.CASCADE, related_name='posts')
+    author = models.ForeignKey(to=User, on_delete=models.RESTRICT, related_name='posts')
     category = models.ForeignKey(to=Category, on_delete=models.CASCADE, related_name='posts')
     
     def __str__(self):

@@ -1,4 +1,3 @@
-/* Блок категорий */
 .categories {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -36,7 +35,10 @@
     font-size: 14px;
 }
 
-/* Список постов */
+.save-link {
+    cursor: pointer;
+}
+
 .posts-list {
     background-color: white;
     border-radius: 8px;

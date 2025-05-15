@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% block title %}{% endblock title %}
+    <title>{% block title %}{% endblock title %}</title>
     {% block links %}{% endblock links %}
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <style>
@@ -25,11 +25,11 @@
                         <li><a href="{% url 'users:sign' %}">Регистрация</a></li>
                     {% elif user.is_superuser %}
                         <li><a href="{% url 'admin:index' %}">admin panel</a></li>
-                        <li><a href="profile.html">Профиль</a></li>
+                        <li><a href="{% url 'users:profile' %}">Профиль</a></li>
                         <li><a href="favorites.html">Избранное</a></li>
                         <li><a href="{% url 'users:logout' %}">Выйти</a></li>
                     {% else %}
-                        <li><a href="profile.html">Профиль</a></li>
+                        <li><a href="{% url "users:profile" %}">Профиль</a></li>
                         <li><a href="favorites.html">Избранное</a></li>
                         <li><a href="{% url 'users:logout' %}">Выйти</a></li>
                     {% endif %}
@@ -43,10 +43,10 @@
     {% endblock main %}
     
     <!-- Подвал -->
-    <footer>
+    {% comment %} <footer>
         <div class="container">
             <p>&copy; 2023 Форум. Все права защищены.</p>
         </div>
-    </footer>
+    </footer> {% endcomment %}
 </body>
 </html>
