@@ -26,11 +26,11 @@
                     {% elif user.is_superuser %}
                         <li><a href="{% url 'admin:index' %}">admin panel</a></li>
                         <li><a href="{% url 'users:profile' %}">Профиль</a></li>
-                        <li><a href="favorites.html">Избранное</a></li>
+                        <li><a href="favorites.html">Улюблені пости</a></li>
                         <li><a href="{% url 'users:logout' %}">Выйти</a></li>
                     {% else %}
                         <li><a href="{% url "users:profile" %}">Профиль</a></li>
-                        <li><a href="favorites.html">Избранное</a></li>
+                        <li><a href="{% url "posts:save_post_view" %}">Улюблені пости</a></li>
                         <li><a href="{% url 'users:logout' %}">Выйти</a></li>
                     {% endif %}
                 </ul>

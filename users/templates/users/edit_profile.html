@@ -136,28 +136,5 @@
             </div>
         </form>
     </div>
-
-    <script>
-        // Предпросмотр аватара
-        document.querySelector('.upload-btn-wrapper input[type="file"]').addEventListener('change', function(e) {
-            if (this.files && this.files[0]) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    document.querySelector('.avatar-preview img').setAttribute('src', e.target.result);
-                }
-                reader.readAsDataURL(this.files[0]);
-            }
-        });
-
-        // Подсветка полей с ошибками
-        document.addEventListener('DOMContentLoaded', function() {
-            {% if form.errors %}
-                {% for field in form %}
-                    {% if field.errors %}
-                        document.getElementById('{{ field.id_for_label }}').classList.add('is-invalid');
-                    {% endif %}
-                {% endfor %}
-            {% endif %}
-        });
-    </script>
+    <script src="{% static "users/js/main.js" %}"></script>
 {% endblock main %}

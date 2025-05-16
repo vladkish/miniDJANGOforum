@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'posts/css/create_post.css' %}">
+{% endblock links %}
+
+{% block main %}
+    <div class="post-create-container">
+        <h1 class="post-create-title">Создать новый пост</h1>
+        
+        <form class="post-create-form" action="{% url 'posts:creation_post' %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <div class="form-group">
+                <label for="{{ form.title.id_for_label }}">Заголовок</label>
+                {{ form.title }}
+            </div>
+            
+            <div class="form-group">
+                <label for="{{ form.description.id_for_label }}">Описание</label>
+                {{ form.description }}
+            </div>
+            
+            <div class="form-group">
+                <label for="{{ form.category.id_for_label }}">Категория</label>
+                {{ form.category }}
+            </div>
+            
+            <div class="form-group image-upload-wrapper">
+                <label for="{{ form.image.id_for_label }}">Изображение</label>
+                <label class="image-upload-label" for="id_image">
+                    <i class="fas fa-cloud-upload-alt image-upload-icon"></i>
+                    <div class="image-upload-text">
+                        <strong>Нажмите для загрузки</strong> или перетащите изображение
+                        <p>Рекомендуемый размер: 1200x630px</p>
+                    </div>
+                    {{ form.image }}
+                    <img id="image-preview" class="image-upload-preview" src="#" alt="Предпросмотр">
+                </label>
+            </div>
+            
+            <button type="submit" class="submit-btn">Опубликовать пост</button>
+        </form>
+    </div>
+
+    <script src="{% static "posts/js/main.js" %}"></script>
+{% endblock main %}

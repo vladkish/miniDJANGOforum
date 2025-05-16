@@ -2,7 +2,7 @@
 {% load static %}
     
 {% block title %}
-    <title>Форум - Главная страница</title>
+    <title>Форум - {% if title %}{{ title }}{% else %}Главная страница форума{% endif %}</title>
 {% endblock title %}
 
 {% block links %}
@@ -19,28 +19,52 @@
 
     <!-- Основное содержание -->
     <main class="container">
-        <h1 class="page-title">Главная страница форума</h1>        
+        <h1 class="page-title">{% if title %}{{ title }}{% else %}Главная страница форума{% endif %}</h1>        
         <!-- Последние посты -->
-        <h2>Последние сообщения</h2>
-        {% for post in posts %}
-            <div class="posts-list">
-                <article class="post">
-                    <div class="post-header">
-                        <h3 class="post-title"><a href="post.html">{{ post.title }}</a></h3>
-                        <span class="post-author">Автор: <a href="profile.html">{{ post.author }}</a></span>
-                    </div>
-                    <div class="post-content">
-                        <p>{{ post.description }}</p>
-                    </div>
-                    <div class="post-footer">
-                        <span class="post-date">Опубликовано: {{ post.date_public }}</span>
-                        <div class="post-actions">
-                            <a href="#">Ответить</a>
-                            <a href="favorites.html">В избранное</a>
+        {% if posts %}
+            <h2>Посты</h2>
+            {% for post in posts %}
+                <div class="posts-list">
+                    <article class="post">
+                        <div class="post-header">
+                            <h3 class="post-title"><a href="post.html">{{ post.title }}</a></h3>
+                            <span class="post-author">Автор: <a href="profile.html">{{ post.author }}</a></span>
                         </div>
-                    </div>
-                </article>
-            </div>
-        {% endfor %}
+                        <div class="post-content">
+                            <p>{{ post.description }}</p>
+                        </div>
+                        <div class="post-footer">
+                            <span class="post-date">Опубликовано: {{ post.date_public }}</span>
+                            <div class="post-actions">
+                                <a href="#">Ответить</a>
+                                <a href="{% url "posts:save_post" post.id %}">В избранное</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            {% endfor %}
+        {% else %}
+            <h2>Избранные посты</h2>
+            {% for post in favorite_posts  %}
+                <div class="posts-list">
+                    <article class="post">
+                        <div class="post-header">
+                            <h3 class="post-title"><a href="post.html">{{ post.post.title }}</a></h3>
+                            <span class="post-author">Автор: <a href="profile.html">{{ post.post.author }}</a></span>
+                        </div>
+                        <div class="post-content">
+                            <p>{{ post.post.description }}</p>
+                        </div>
+                        <div class="post-footer">
+                            <span class="post-date">Опубликовано: {{ post.post.date_public }}</span>
+                            <div class="post-actions">
+                                <a href="#">Ответить</a>
+                                <a href="{% url "posts:save_post" post.id %}">Удалить из избранных</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            {% endfor %}
+        {% endif %}
     </main>
 {% endblock main %}
